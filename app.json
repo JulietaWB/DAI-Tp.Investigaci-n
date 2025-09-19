@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "vibrador-app",
-    "slug": "vibrador-app",
+    "name": "DAI-Investigacion-vibracion",
+    "slug": "dai-investigacion-vibracion",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

@@ -1,0 +1,24 @@
+Cómo funciona la personalización
+
+Duración simple (Tiempo (ms)): Si el campo de patrón está vacío, se usa el valor de duración. Al presionar “Vibrar”, 
+se llama Vibration.vibrate(parsedDuration).
+
+Patrón personalizado (Patrón): Si escribes números separados por comas o espacios, se interpreta como un arreglo de milisegundos y se 
+usa Vibration.vibrate(parsedPattern, repeat).
+
+Formato: [espera, vibra, espera, vibra, ...]
+
+El primer número es cuánto tiempo esperar antes de vibrar, el segundo cuánto vibrar, y así sucesivamente, alternando.
+Ejemplos:
+0, 300 → vibra 300 ms de inmediato.
+0, 300, 200, 300 → vibra 300 ms, espera 200 ms, vibra 300 ms.
+500, 100, 500, 100, 500, 100 → espera medio segundo, vibra 100 ms, repite secuencia.
+Repetición (Repetir): Si activas el switch, el patrón se vuelve a ejecutar en bucle hasta que llames a “Cancelar” o cierres la app.
+Cancelar: “Cancelar” llama Vibration.cancel() y detiene cualquier vibración/patrón activo.
+Validaciones que hace la app
+El patrón se obtiene del texto dividiéndolo por comas o espacios, convirtiendo a enteros y descartando valores no numéricos o negativos.
+Si hay patrón, la duración simple se ignora.
+Si no hay patrón y la duración no es > 0, muestra el error: “Ingrese un tiempo válido (> 0 ms) o un patrón.”
+Notas por plataforma (importante)
+Android: Soporta patrones y repetición como se describe.
+iOS: Históricamente no soporta patrones ni repetición con Vibration.vibrate(pattern, repeat); generalmente sólo una vibración básica. Si pruebas en iOS, espera que el comportamiento sea más limitado.
